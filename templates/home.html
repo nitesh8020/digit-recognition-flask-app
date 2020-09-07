@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MNIST DIGIT</title>
+    <meta charset="utf-8">
+	<meta name="description" content="Example code ">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" ></script>
+    <script type='text/javascript' src='http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.0/fabric.min.js'></script>
+    <style type='text/css'>
+        #sheet {
+            border:1px solid black;
+        }
+    </style>
+    <script type='text/javascript'>
+        window.onload=function(){
+            var canvas = new fabric.Canvas('sheet',{backgroundColor : "#000000"});
+            canvas.renderTop();
+            canvas.isDrawingMode = true;
+            canvas.freeDrawingBrush.width = 35;
+            canvas.freeDrawingBrush.color = "#ffffff";
+
+        }
+
+
+        function canvasimg()
+   		{
+      		var canvas = document.getElementById("sheet");
+        	var img = canvas.toDataURL('image/png');
+        	document.getElementById("imagedata").value=img;
+   		}
+
+    </script>
+  </head>
+  <body>
+    <canvas id="sheet" width="400" height="400" style="border:5px solid #ffffff;">
+    	
+    </canvas>
+    <form id="form1" action="{{ url_for('upload') }}" method ='POST' enctype="multipart/form-data">
+    	<input type="hidden"  id="imagedata" name="img" />
+    	<br>
+    <input type= "submit" value='Submit' id='two' onclick="canvasimg();" />
+</form>
+<br><br>
+This is a simple web app made for purpose of experimenting. 
+
+</body>
+</html>
